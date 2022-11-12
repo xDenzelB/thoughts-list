@@ -3,5 +3,5 @@ export default function Navigation() {
     <div>
       <h1>Nav</h1>
     </div>
-  )
+  );
 }
