@@ -1,9 +1,9 @@
 export default function Message({children}) {
   return (
-    <div>
-      <div>
+    <div className="bg-white p-8 border-b-2 rounded-lg">
+      <div className="flex items-center ">
       <img src="" />
-      <h2>user</h2>
+      <h2>User</h2>
       </div>
       <div>
         <p>Description</p>

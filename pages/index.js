@@ -1,7 +1,25 @@
 import Head from 'next/head'
+import Message from '../components/message'
+import { useEffect, useState } from 'react'
+import { db } from '../utils/firebase'
+import { collection, orderBy, onSnapshot, query } from 'firebase/firestore';
 
 
 export default function Home() {
+  const [allPosts, setAllPosts] = useState([]);
+
+  const getPosts = async () => {
+    const collectionRef = collection(db, 'posts');
+    const q = query(collectionRef, orderBy('timestamp', 'desc'));
+    const unSub = onSnapshot(q, (snap) => {
+      setAllPosts(snap.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+    })
+    return unSub;
+  }
+
+  useEffect(() => {
+    getPosts()
+  }, [])
   return (
     <div>
       <Head>
@@ -12,6 +30,7 @@ export default function Home() {
 
       <div className='my-12 text-lg font-medium'>
         <h2 className='text-2xl'>See how other people are feeling</h2>
+        <Message />
       </div>
 
     </div>
