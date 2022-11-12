@@ -1,8 +1,8 @@
-import { auth } from '../utils/firebase';
+import { auth, db } from '../utils/firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useRouter } from 'next/router';
-import { useEffect } from 'react';
-import { collection, deleteDoc, onSnapshot, query } from 'firebase/firestore';
+import { useEffect, useState } from 'react';
+import { collection, deleteDoc, onSnapshot, query, where, doc } from 'firebase/firestore';
 import Message from '../components/message';
 import { BsTrash2Fill } from "react-icons/bs";
 import { AiFillEdit } from "react-icons/ai";

@@ -3,6 +3,7 @@ import Message from '../components/message'
 import { useEffect, useState } from 'react'
 import { db } from '../utils/firebase'
 import { collection, orderBy, onSnapshot, query } from 'firebase/firestore';
+import Link from 'next/link';
 
 
 export default function Home() {
@@ -30,7 +31,16 @@ export default function Home() {
 
       <div className='my-12 text-lg font-medium'>
         <h2 className='text-2xl'>See how other people are feeling</h2>
-        <Message />
+        {allPosts.map((post) => {
+          <Message key={post.id} {...post}>
+            <Link href={{ pathname: `/${post.id}`, query: { ...post } }}>
+              <button>
+                {post.comments?.length > 0 ? post.comments?.length : 0} Comments
+              </button>
+            </Link>
+
+          </Message>
+        })}
       </div>
 
     </div>
