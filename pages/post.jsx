@@ -2,7 +2,7 @@ import { auth, db } from '../utils/firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
-import { addDoc, collection, serverTimestamp, updateDoc } from 'firebase/firestore';
+import { addDoc, collection, serverTimestamp, updateDoc, doc } from 'firebase/firestore';
 import { toast } from "react-toastify";
 
 export default function Post() {
@@ -71,7 +71,9 @@ export default function Post() {
   return (
     <div className='my-20 p-12 shadow-lg rounded-lg max-w-md mx-auto'>
       <form onSubmit={handleSubmit}>
-        <h1 className='text-2x1 font-bold'>Whats on Your Mind?</h1>
+        <h1 className='text-2x1 font-bold'>
+          {post.hasOwnProperty('id') ? "Edit your thoughts" : "What are you thinking?"}
+        </h1>
         <div className='py-2'>
           <h3 className='text-lg font-medium py-2'>Description</h3>
           <textarea
