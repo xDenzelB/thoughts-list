@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { auth, db } from "../utils/firebase";
 import { toast } from "react-toastify";
-import { arrayUnion, onSnapshot, Timestamp, updateDoc } from "firebase/firestore";
+import { arrayUnion, onSnapshot, Timestamp, updateDoc, doc, query,  } from "firebase/firestore";
 
 export default function Details() {
   const router = useRouter();
