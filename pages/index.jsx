@@ -14,7 +14,7 @@ export default function Home() {
     const q = query(collectionRef, orderBy('timestamp', 'desc'));
     const unSub = onSnapshot(q, (snap) => {
       setAllPosts(snap.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-    })
+    });
     return unSub;
   }
 
