@@ -5,12 +5,17 @@ import { MdOutlineDarkMode } from 'react-icons/md';
 
 export default function ThemeSwitcher() {
   const { resolvedTheme, setTheme } = useTheme();
+  const [componentMount, setComponentMount] = useState(false);
+
+  useEffect(() => {
+    setComponentMount(true)
+  }, []);
 
   const themeIcons = () => {
-    if (resolvedTheme === 'dark') {
+    if (componentMount && resolvedTheme === 'dark') {
       return <HiOutlineSun className="text-xl md:text-2x1" />
-    } else if (resolvedTheme === 'light') {
-      <MdOutlineDarkMode className="text-xl md:text-2x1" />
+    } else if (componentMount && resolvedTheme === 'light') {
+      return <MdOutlineDarkMode className="text-xl md:text-2x1" />
     }
   }
 

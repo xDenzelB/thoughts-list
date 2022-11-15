@@ -6,7 +6,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 function MyApp({ Component, pageProps }) {
   return (
-    <ThemeProvider>
+    <ThemeProvider attribute='class'>
       <Layout>
         <ToastContainer limit={1} />
         <Component {...pageProps} />

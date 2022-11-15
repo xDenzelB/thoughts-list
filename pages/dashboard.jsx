@@ -37,7 +37,7 @@ export default function Dashboard() {
   
   return (
     <div>
-      <h1>Your thoughts</h1>
+      <h1 className='text-2xl underline'>Thought History</h1>
       <div>
         {posts.map((post) => {
           return (
@@ -46,11 +46,11 @@ export default function Dashboard() {
               <div className='flex gap-4'>
                 <button
                   onClick={() => deletePost(post.id)}
-                  className="text-pink-600 flex items-center justify center gap-2 py-2 text-sm">
+                  className="text-pink-600 flex items-center justify center gap-2 py-2 text-sm bg-black w-20 rounded-lg hover:underline">
                   <BsTrash2Fill className='text-2xl' /> Delete
                 </button>
                 <Link href={{ pathname: "/post", query: post }}>
-                  <button className='text-teal-600 flex items-center justify-center gap-2 py-2 text-sm'>
+                  <button className='text-teal-600 flex items-center justify-center gap-2 py-2 text-sm bg-black w-20 rounded-lg hover:underline'>
                     <AiFillEdit className='text-2xl' />
                     Edit
                   </button>

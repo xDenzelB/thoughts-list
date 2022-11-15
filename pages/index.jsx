@@ -30,18 +30,18 @@ export default function Home() {
       </Head>
 
       <div className='my-12 text-lg font-medium'>
-        <h2 className='text-2xl'>See how other people are feeling</h2>
+        <h2 className='text-2xl underline'>See how other people are feeling...</h2>
         {allPosts.map((post) => {
           return (
             <Message key={post.id} {...post}>
               <Link href={{ pathname: `/${post.id}`, query: { ...post } }}>
-                <button>
+                <button className='bg-cyan-500 rounded-xl border-cyan-500 border-8 hover:underline'>
                   {post.comments?.length > 0 ? post.comments?.length : 0} Comments
                 </button>
               </Link>
             </Message>
-          );
-        })};
+          )
+        })}
       </div>
 
     </div>
